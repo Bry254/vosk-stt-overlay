@@ -27,14 +27,15 @@ The required Vosk `.so` library must be located in the **same directory from whi
 For example:
 
 ```text
-subtitle-overlay/
-├── subtitle-overlay
+vosk-tts-overlay/
+├── vosk-tts-overlay
 ├── libvosk.so
 └── model.txt
 ```
 
 Make sure `libvosk.so` is available when running the program.
 Can you download [here](https://github.com/alphacep/vosk-api/releases/download/v0.3.45/vosk-linux-x86_64-0.3.45.zip)
+
 ---
 
 # Subtítulos en tiempo real
@@ -66,8 +67,8 @@ La biblioteca `.so` de Vosk debe encontrarse en la **misma carpeta desde la que 
 Por ejemplo:
 
 ```text
-subtitle-overlay/
-├── subtitle-overlay
+vosk-tts-overlay/
+├── vosk-tts-overlay
 ├── libvosk.so
 └── model.txt
 ```
