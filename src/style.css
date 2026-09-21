@@ -1,0 +1,11 @@
+label {
+    color: white;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    border-width: 5px;
+}
+
+window {
+    background-color: transparent;
+}

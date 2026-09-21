@@ -1,0 +1,10 @@
+[package]
+name = "vosk-tts-overlay"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cpal = "0.18.2"
+gtk = "0.18.0"
+gtk-layer-shell = "0.8.2"
+vosk = "0.3.1"
