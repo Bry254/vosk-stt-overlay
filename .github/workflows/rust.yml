@@ -1,0 +1,54 @@
+name: Build Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # Descargar el código del repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Instalar herramientas necesarias
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y wget unzip zip pkg-config libglib2.0-dev libgtk-3-dev libgtk-layer-shell-dev libasound2-dev
+
+      # Descargar la biblioteca de Vosk
+      - name: Download Vosk
+        run: |
+          wget https://github.com/alphacep/vosk-api/releases/download/v0.3.45/vosk-linux-x86_64-0.3.45.zip
+          unzip vosk-linux-x86_64-0.3.45.zip
+
+          mkdir -p lib
+          cp vosk-linux-x86_64-0.3.45/libvosk.so ./lib/
+
+      # Compilar el proyecto
+      - name: Build
+        run: |
+          cargo build --release
+
+      # Preparar los archivos para distribuir
+      - name: Prepare package
+        run: |
+          mkdir -p package
+
+          cp target/release/vosk-tts-overlay package/
+          cp lib/libvosk.so package/
+
+      # Crear el ZIP
+      - name: Create ZIP
+        run: |
+          cd package
+          zip -r ../vosk-tts-overlay-linux-x86_64.zip .
+
+      # Guardar el ZIP como Artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vosk-tts-overlay-linux-x86_64
+          path: vosk-tts-overlay-linux-x86_64.zip
