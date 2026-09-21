@@ -1253,13 +1253,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "vosk-sys"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "73ab2937e19c7d32c1a077a4a220011cbbb2b6ab83bb35635ffb65a82b7e43f6"
-
-[[package]]
-name = "vosk-tts-overlay"
+name = "vosk-stt-overlay"
 version = "0.1.0"
 dependencies = [
  "cpal",
@@ -1267,6 +1261,12 @@ dependencies = [
  "gtk-layer-shell",
  "vosk",
 ]
+
+[[package]]
+name = "vosk-sys"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "73ab2937e19c7d32c1a077a4a220011cbbb2b6ab83bb35635ffb65a82b7e43f6"
 
 [[package]]
 name = "walkdir"
