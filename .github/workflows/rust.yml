@@ -31,12 +31,17 @@ jobs:
       - name: Build
         run: |
           cargo build --release
+      # Preparar archivos para exportar.
+      - name: Packing files
+        run: |
+            cp target/release/vosk-stt-overlay .
+            cp lib/libvosk.so .
 
       # Guardar el ZIP como Artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: vosk-tts-overlay-linux-x86_64
+          name: vosk-stt-overlay-linux-x86_64
           path: |
-            target/release/vosk-stt-overlay
-            lib/libvosk.so
+            vosk-stt-overlay
+            libvosk.so
