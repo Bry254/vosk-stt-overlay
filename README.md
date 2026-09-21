@@ -1,6 +1,6 @@
-# Real-Time Subtitle Overlay
+# Real-Time Subtitle Overlay with Vosk
 
-A simple overlay that uses [Vosk](https://alphacephei.com/vosk/) for real-time speech recognition and displays the recognized subtitles on screen.
+A simple overlay that uses [Vosk models](https://alphacephei.com/vosk/models) for real-time speech recognition and displays the recognized subtitles on screen.
 
 ## Usage
 
@@ -38,9 +38,9 @@ Can you download [here](https://github.com/alphacep/vosk-api/releases/download/v
 
 ---
 
-# Subtítulos en tiempo real
+# Subtítulos en tiempo real con vosk
 
-Un overlay sencillo que utiliza [Vosk](https://alphacephei.com/vosk/) para reconocimiento de voz en tiempo real y muestra los subtítulos reconocidos en pantalla.
+Un overlay sencillo que utiliza [modelos de Vosk](https://alphacephei.com/vosk/models) para reconocimiento de voz en tiempo real y muestra los subtítulos reconocidos en pantalla.
 
 ## Uso
 
