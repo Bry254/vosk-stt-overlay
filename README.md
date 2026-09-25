@@ -69,7 +69,7 @@ El programa necesita un modelo de Vosk para realizar el reconocimiento de voz.
 Puedes proporcionar la ruta al modelo como argumento:
 
 ```bash
-./subtitle-overlay /ruta/al/modelo-de-vosk
+./vosk-stt-overlay /ruta/al/modelo-de-vosk
 ```
 
 También puedes crear un archivo `model.txt` en la misma carpeta y escribir dentro de él la ruta al modelo de Vosk:
@@ -94,7 +94,6 @@ vosk-stt-overlay/
 ```
 
 Asegúrate de que `libvosk.so` esté disponible al ejecutar el programa.
-
 Puedes descargarla [aquí](https://github.com/alphacep/vosk-api/releases/download/v0.3.45/vosk-linux-x86_64-0.3.45.zip).
 
 ## Licencia
