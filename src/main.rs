@@ -52,8 +52,12 @@ fn build_ui(app: &Application, ruta_modelo: String) {
         .decorated(false)
         .build();
 
-    let css = CssProvider::new();
+    window.init_layer_shell();
+    window.set_layer(Layer::Overlay);
+    window.set_keyboard_interactivity(false);
+    window.set_anchor(Edge::Bottom, true);
 
+    let css = CssProvider::new();
     css.load_from_data(include_str!("style.css").as_bytes())
         .expect("No se pudo cargar el CSS");
 
@@ -63,16 +67,13 @@ fn build_ui(app: &Application, ruta_modelo: String) {
         gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
     );
 
-    // Posición
-
+    // Creacion de el label para mostrar texto
     let label = gtk::Label::new(Some("-"));
-
     label.set_line_wrap(true);
     label.set_width_request(800);
     label.set_valign(gtk::Align::Start);
     label.set_xalign(1.0);
-
-    // Espacio entre el texto y el borde inferior
+    label.set_margin(100);
     label.set_margin_bottom(20);
 
     window.add(&label);
@@ -84,9 +85,8 @@ fn build_ui(app: &Application, ruta_modelo: String) {
     };
 
     let reciber = audio::start_audio_thread(&model);
-
     let label_clone = label.clone();
-
+    // Actualizacion de el label
     gtk::glib::timeout_add_local(Duration::from_millis(100), move || {
         if let Ok(value) = reciber.try_recv() {
             let texto = format!("- {} -", value);
@@ -95,12 +95,7 @@ fn build_ui(app: &Application, ruta_modelo: String) {
 
         gtk::glib::ControlFlow::Continue
     });
-    window.set_keyboard_interactivity(false);
-    window.init_layer_shell();
-    window.set_anchor(Edge::Bottom, true);
-    window.set_layer(Layer::Overlay);
-    label.set_margin(100);
-    // window.set_keyboard_interactivity(false);
+
     window.show_all();
     let region = cairo::Region::create();
     window.input_shape_combine_region(Some(&region));
